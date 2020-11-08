@@ -33,6 +33,14 @@ class MyHomePage extends StatelessWidget {
     ),
   ];
 
+  final titleController = TextEditingController();
+  final amountController = TextEditingController();
+
+  void _addTransaction() {
+    print(titleController.text);
+    print(amountController.text);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,6 +50,7 @@ class MyHomePage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
+          //-----------------CHART AREA -------------------------
           Container(
             width: double.infinity,
             height: 100.0,
@@ -49,6 +58,47 @@ class MyHomePage extends StatelessWidget {
               color: Colors.blue,
               child: Text('CHART'),
               elevation: 5,
+            ),
+          ),
+          //-----------------INPUT AREA---------------------
+          Card(
+            elevation: 6,
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Title',
+                    ),
+                    // onChanged: (value) {
+                    //   titleInput = value;
+                    // },
+                    controller: titleController,
+                  ),
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Amount',
+                    ),
+                    controller: amountController,
+                    // onChanged: (value) {
+                    //   amountInput = value;
+                    // },
+                  ),
+                  FlatButton(
+                    onPressed: _addTransaction,
+                    textColor: Colors.purple,
+                    splashColor: Colors.blue,
+                    child: Text(
+                      'Add Transaction',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
           Column(
