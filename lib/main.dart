@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import 'transaction.dart';
 
@@ -39,7 +40,7 @@ class MyHomePage extends StatelessWidget {
         title: Text('Expense Planner'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Container(
             width: double.infinity,
@@ -96,7 +97,7 @@ class MyHomePage extends StatelessWidget {
                         Container(
                           margin: EdgeInsets.symmetric(vertical: 5.0),
                           child: Text(
-                            transaction.date.toString(),
+                            new DateFormat.yMMMMd().format(transaction.date),
                             style: TextStyle(
                               color: Colors.grey,
                               fontSize: 16.0,
