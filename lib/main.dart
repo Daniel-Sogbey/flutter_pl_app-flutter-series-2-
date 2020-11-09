@@ -23,22 +23,24 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Expense Planner'),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          //-----------------CHART AREA -------------------------
-          Container(
-            width: double.infinity,
-            height: 100.0,
-            child: Card(
-              color: Colors.blue,
-              child: Text('CHART'),
-              elevation: 5,
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            //-----------------CHART AREA -------------------------
+            Container(
+              width: double.infinity,
+              height: 100.0,
+              child: Card(
+                color: Colors.blue,
+                child: Text('CHART'),
+                elevation: 5,
+              ),
             ),
-          ),
-          //-----------------------USER INPUT AND TRANSACTION LIST
-          UserTransactions(),
-        ],
+            //-----------------------USER INPUT AND TRANSACTION LIST
+            UserTransactions(),
+          ],
+        ),
       ),
     );
   }
