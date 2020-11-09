@@ -13,7 +13,7 @@ class TransactionList extends StatelessWidget {
       margin: EdgeInsets.all(20.0),
       height: 200,
       child: ListView.builder(
-        itemBuilder: (BuildContext, index) {
+        itemBuilder: (ctx, index) {
           return Card(
             child: Row(
               children: <Widget>[
