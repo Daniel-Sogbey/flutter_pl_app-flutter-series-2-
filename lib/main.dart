@@ -120,7 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   onTap: () => _startAddNewTransaction(context),
                   child: Icon(
                     CupertinoIcons.add,
-                    size: 35.0,
+                    size: 36.0,
                   ),
                 ),
               ],
