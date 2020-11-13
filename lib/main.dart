@@ -114,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ? CupertinoNavigationBar(
             middle: Text('Expense Planner'),
             trailing: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 GestureDetector(
                   onTap: () => _startAddNewTransaction(context),
@@ -152,53 +152,58 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
 
-    final pageBody = SingleChildScrollView(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          if (isLandscape)
-            Row(
-              children: <Widget>[
-                Text('Show Chart'),
-                Switch.adaptive(
-                  activeColor: Theme.of(context).accentColor,
-                  value: _showChart,
-                  onChanged: (value) {
-                    setState(() {
-                      _showChart = value;
-                    });
-                  },
-                ),
-              ],
-            ),
-          //-----------------CHART AREA -------------------------
-          if (!isLandscape)
-            Container(
-              height: (mediaQuery.size.height -
-                      appBar.preferredSize.height -
-                      mediaQuery.padding.top) *
-                  0.3,
-              child: Chart(
-                recentTransactions: _recentTransactions,
+    final pageBody = SafeArea(
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            if (isLandscape)
+              Row(
+                children: <Widget>[
+                  Text(
+                    'Show Chart',
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
+                  Switch.adaptive(
+                    activeColor: Theme.of(context).accentColor,
+                    value: _showChart,
+                    onChanged: (value) {
+                      setState(() {
+                        _showChart = value;
+                      });
+                    },
+                  ),
+                ],
               ),
-            ),
-          if (!isLandscape) txListWidget,
-          if (isLandscape)
-            _showChart
-                ? Container(
-                    height: (mediaQuery.size.height -
-                            appBar.preferredSize.height -
-                            mediaQuery.padding.top) *
-                        0.7,
-                    child: Chart(
-                      recentTransactions: _recentTransactions,
-                    ),
-                  )
-                :
-                //-----------------------USER INPUT AND TRANSACTION LIST
-                txListWidget,
-          //-------------------------------TRANSACTIONS------------OR----------WAITING IMAGE--------------------------------
-        ],
+            //-----------------CHART AREA -------------------------
+            if (!isLandscape)
+              Container(
+                height: (mediaQuery.size.height -
+                        appBar.preferredSize.height -
+                        mediaQuery.padding.top) *
+                    0.3,
+                child: Chart(
+                  recentTransactions: _recentTransactions,
+                ),
+              ),
+            if (!isLandscape) txListWidget,
+            if (isLandscape)
+              _showChart
+                  ? Container(
+                      height: (mediaQuery.size.height -
+                              appBar.preferredSize.height -
+                              mediaQuery.padding.top) *
+                          0.7,
+                      child: Chart(
+                        recentTransactions: _recentTransactions,
+                      ),
+                    )
+                  :
+                  //-----------------------USER INPUT AND TRANSACTION LIST
+                  txListWidget,
+            //-------------------------------TRANSACTIONS------------OR----------WAITING IMAGE--------------------------------
+          ],
+        ),
       ),
     );
 
