@@ -5,7 +5,7 @@
 An Expense Planner Application.
 
 ## App Screenshots
-| Homepage | | Adding Transactions Page |
+| Homepage |
 | :---: | --- | :---: |
 | <img src="docs/i-1.png" width="300"> |
 | This is the home page where you see all transactions |
